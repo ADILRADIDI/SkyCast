@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <body id="body">
+    <!-- header -->
+    <header
+      id="header"
+      class="rounded-full mt-5 py-3 mx-2 justify-center items-center m-auto"
+    >
+      <div
+        id="container_links_header"
+        class="flex m-auto items-center justify-between mx-2"
+      >
+        <!-- logo -->
+        <h1 class="mx-5 text-black text-xl font-bold">SkyCast</h1>
+
+        <div id="links" class="flex gap-3">
+          <a
+            href="#"
+            id="current_location"
+            class="rounded-full flex items-center m-auto px-1"
+          >
+            <img src="img/location_currents.svg" alt="" class="w-10" />
+            <h1 class="font-bold hidden md:block">Your Location</h1>
+          </a>
+          <select
+            name=""
+            id="select"
+            class="rounded-3xl outline-none font-bold hidden md:block"
+          >
+            <option value="celsius" class="font-bold italic">Celsius</option>
+            <option value="fahrenheit" class="font-bold italic">
+              Fahrenheit
+            </option>
+            <option value="kelvin" class="font-bold italic">Kelvin</option>
+          </select>
+          <div id="container_search" class="flex rounded-xl bg-gray-200">
+            <a href="#" id="search_link">
+              <img
+                src="img/search_white.svg"
+                alt="search_white"
+                id="search_white"
+                class="w-10"
+              />
+            </a>
+            <input
+              type="text"
+              name=""
+              id="input_search"
+              placeholder="Search city"
+              class="outline-none rounded-xl bg-gray-200"
+            />
+          </div>
+          <a href="#" class="hidden md:block" id="brightness_icon">
+            <!-- change mode sombre to light -->
+            <img src="img/Sun.svg" alt="sun_icon" class="w-10" id="img_dark" />
+          </a>
+        </div>
+      </div>
+    </header>
+    <!-- section main -->
+    <main class="mx-2 rounded-3xl mt-5" id="main">
+      <div><h1 class="font-bold text-2xl mx-7">Today</h1></div>
+      <div class="containerOne items-center justify-around m-auto block md:flex mt-10">
+        <!-- weather today -->
+        <div id="Today" class="rounded-2xl">
+            <div class="location_exact flex items-center justify-center mb-5 m-auto font-bold">
+                <img src="img/location_black.svg" class="w-10" id="img_location" alt="location exactly">
+                <p  id="location">Casablanca,Morocco</p>
+            </div>
+          <!-- box for weather today three divs -->
+          <div
+            class="flex justify-between items-center mb-5 m-auto font-bold mx-5 text-xl"
+          >
+            <div id="today" class="ml-2"><p>Friday</p></div>
+            <div id="time" class="mr-2"><p>15:45</p></div>
+          </div>
+          <div
+            class="flex justify-between items-center mb-7 m-auto font-bold mx-7 text-xl"
+          >
+            <div id="weather_today" class="text-3xl"><p>180</p></div>
+            <div id="icon_cloud">
+              <img id="img_cloud" src="img/sunnyDay.svg" alt="" />
+            </div>
+          </div>
+          <div class="flex justify-between items-center m-auto mx-7 gap-3">
+            <div id="first_four">
+              <div class="flex gap-3">
+                <p>Real Feel</p>
+                <p class="font-bold" id="value1">180</p>
+              </div>
+              <div class="flex gap-3">
+                <p>Wind N-E.</p>
+                <p class="font-bold" id="value1">6-7km/h</p>
+              </div>
+              <div class="flex gap-3">
+                <p>Pressure</p>
+                <p class="font-bold" id="value1">100MB</p>
+              </div>
+              <div class="flex gap-3">
+                <p>Humidity</p>
+                <p class="font-bold" id="value1">51%</p>
+              </div>
+            </div>
+            <div>
+              <div class="flex gap-3">
+                <p>Sunrise</p>
+                <p class="font-bold" id="value1">5:30AM</p>
+              </div>
+              <div class="flex gap-3">
+                <p>Sunset</p>
+                <p class="font-bold" id="value1">6:45</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- five days future -->
+        <div id="fiveDays" class="gap-3 flex">
+          <!-- day 1 -->
+          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1  m-auto items-center justify-center block">
+            <p class="mb-10">Monday</p>
+            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
+            <p class="mb-10" id="">10C</p>
+          </div>
+          <!-- day 2 -->
+          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+            <p class="mb-10">Tuesday</p>
+            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
+            <p class="mb-10" id="">-2C</p>
+          </div>
+          <!-- day 3 -->
+          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+            <p class="mb-10">wednesday</p>
+            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
+            <p class="mb-10" id="">36C</p>
+          </div>
+          <!-- day 4 -->
+          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+            <p class="mb-10">Thursday</p>
+            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
+            <p class="mb-10" id="">-6C</p>
+          </div>
+          <!-- day 5 -->
+          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+            <p class="mb-10">Friday</p>
+            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
+            <p class="mb-10" id="">0C</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <!-- link my files javascript -->
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+body {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+#header,
+#main {
+  background-color: #67c6e3;
+}
+#container_search,
+#input_search,
+#select,
+#current_location {
+  background-color: #378ce7;
+}
+#Today{
+    background-color: #5356FF;
+}
+#input_search {
+  display: none;
+}
+
+.fiveOne {
+  background-color: #5356FF;
+  height: 280px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.fiveOne:hover {
+  background-color: #67c6e3;
+  border: 2px solid #5356ff;
+}
