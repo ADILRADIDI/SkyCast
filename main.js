@@ -58,18 +58,31 @@ input_Search.addEventListener("change", function () {
 // api
 let latitude;
 let longitude;
-let city = input_Search.value;
+let location;
+let weather;
+// let city = input_Search.value;
 let metric = "units=metric";
 const api_key = "3d57b696db2bbf1337326cdf28fd0fd5";
-// const geoUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${api_key}`;
-// const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
 
 let fetchData = async function (url) {
   try {
     console.log(url);
     const response = await fetch(`${url}`);
     const data = await response.json();
-    console.log(data);
+    return data;
+    // if (tpe === true) {
+    //   location = data.city.name + "," + data.city.country;
+    //   let cityName = document.getElementById("location");
+    //   cityName.innerHTML = `<h1>${location}</h1>`;
+    // } else {
+    //   console.log(data);
+    //   location = data.name + "," + data.sys.country;
+    //   let cityName = document.getElementById("location");
+    //   cityName.innerHTML = `<h1>${location}</h1>`;
+    //   // let weather_today = document.getElementById("weather_today");
+    //   // weather = data.main.temp;
+    //   // weather_today.innerHTML = `<h1>${weather}°C</h1>`;
+    // }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -77,36 +90,71 @@ let fetchData = async function (url) {
 
 window.addEventListener("DOMContentLoaded", () => {
   if ("geolocation" in navigator) {
-    // Geolocation is supported
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        // Success callback
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
         const geoUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${api_key}&${metric}`;
-        fetchData(`${geoUrl}`);
+        // fetchData
+        fetchData(`${geoUrl}`)
+          .then((result) => {
+            console.log(result);
+            console.log(result.city.name);
+            const city = result.city.name;
+            const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
+
+            fetchData(`${cityUrl}`)
+              .then((result2) => {
+                console.log(result2.name);
+                let weather_today = document.getElementById("weather_today");
+                weather_today.innerHTML = `<h1>${result2.main.temp}°C</h1>`;
+              })
+              .catch((error2) => {
+                console.error("Error fetching data:", error2);
+              });
+
+            location = result.city.name + "," + result.city.country;
+            let cityName = document.getElementById("location");
+            cityName.innerHTML = `<h1>${location}</h1>`;
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+
+        // fetchData(`${cityUrl}`, false);
         console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
       },
+      //function Error
       function (error) {
-        // Error callback
         console.error("Error getting location: " + error.message);
       },
+      //options
       {
-        // Options
         enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0,
       }
     );
   } else {
-    // Geolocation is not supported
     console.log("Geolocation is not supported by this browser.");
   }
 });
 
-// const input_Search = document.getElementById("input-search");
+// event input search..
 input_Search.addEventListener("change", () => {
   const city = input_Search.value;
   const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
-  fetchData(cityUrl);
+  fetchData(cityUrl)
+    .then((data) => {
+      console.log(data);
+      location = data.name + "," + data.sys.country;
+      let cityName = document.getElementById("location");
+      cityName.innerHTML = `<h1>${location}</h1>`;
+      let weather_today = document.getElementById("weather_today");
+      weather = data.main.temp;
+      weather_today.innerHTML = `<h1>${weather}°C</h1>`;
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
 });
