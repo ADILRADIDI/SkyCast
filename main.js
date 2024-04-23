@@ -48,7 +48,7 @@ function formatDate(date) {
   const fdate = `${year}-${month}-${day}`;
   return fdate;
 }
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 5; i++) {
   today.setDate(today.getDate() + 1);
   days.push(formatDate(today));
 }
@@ -88,6 +88,7 @@ let fetchData = async function (url) {
     console.error("Error fetching data:", error);
   }
 };
+// five value in box temperature...
 
 window.addEventListener("DOMContentLoaded", () => {
   if ("geolocation" in navigator) {
@@ -102,8 +103,49 @@ window.addEventListener("DOMContentLoaded", () => {
             console.log(result);
             console.log(result.city.name);
             const city = result.city.name;
-            const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
+            //weather icon
+            let weather_icon = document.getElementById("weather_icon");
+            weather_icon.src =
+              "https://openweathermap.org/img/wn/" +
+              result.list[0].weather[0].icon +
+              "@2x.png";
+            // weather descriptionnn
+            //=> 1_speed
+            let value1 = document.getElementById("value1");
+            // console.log(result.list[0].wind.speed);
+            value1.innerHTML = `${result.list[0].wind.speed}${" km/h"}`;
+            //=> 2_ pressure
+            let value3 = document.getElementById("value3");
+            value3.innerHTML = `${result.list[0].main.pressure}${" hPa"}`;
+            //=> 3_ Humidity
+            let value4 = document.getElementById("value4");
+            value4.innerHTML = `${result.list[0].main.humidity}${" %"}`;
+            // 4_reel feel
+            let value2 = document.getElementById("value2");
+            value2.innerHTML = `${result.list[0].main.feels_like}${" °C"}`;
+            // five days forecast
+            //day 1
+            let dayOne = document.getElementById("dayOne");
+            dayOne.innerHTML = days[0];
+            let dayOneImg = document.getElementById("dayOneImg");
+            dayOneImg.src = `http://openweathermap.org/img/wn/${result.list[0].weather[0].icon}@2x.png`;
+            // let dayOneW = document.getElementById("dayOneW");
+            // console.log(result);
+            // dayOneWinnerHTML = `${result.list[0].main.temp}`;
+            //day 2
+            let dayTwo = document.getElementById("dayTwo");
+            dayTwo.innerHTML = days[1];
+            //day 3
+            let dayThree = document.getElementById("dayThree");
+            dayThree.innerHTML = days[2];
+            //day 4
+            let dayFour = document.getElementById("dayFour");
+            dayFour.innerHTML = days[3];
+            //day 5
+            let dayFive = document.getElementById("dayFive");
+            dayFive.innerHTML = days[4];
 
+            const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
             fetchData(`${cityUrl}`)
               .then((result2) => {
                 console.log(result2.name);
@@ -120,14 +162,6 @@ window.addEventListener("DOMContentLoaded", () => {
                   minute: "2-digit",
                 });
                 time.innerHTML = `<h1>${ftime}</h1>`;
-                //weather icon
-                let weather_icon = document.getElementById("weather_icon");
-                weather_icon.src =
-                  "https://openweathermap.org/img/wn/" +
-                  data.list[0].weather[0].icon +
-                  "@2x.png";
-                  //five details
-                  
               })
               .catch((error2) => {
                 console.error("Error fetching data:", error2);
@@ -139,8 +173,6 @@ window.addEventListener("DOMContentLoaded", () => {
           .catch((error) => {
             console.error("Error fetching data:", error);
           });
-
-        // fetchData(`${cityUrl}`, false);
         console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
       },
       //function Error
@@ -160,6 +192,52 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // event input search..
+// input_Search.addEventListener("change", () => {
+//   const city = input_Search.value;
+//   const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
+//   fetchData(cityUrl)
+//     .then((data) => {
+//       location = data.name + "," + data.sys.country;
+//       let cityName = document.getElementById("location");
+//       cityName.innerHTML = `<h1>${location}</h1>`;
+//       let weather_today = document.getElementById("weather_today");
+//       weather = data.main.temp;
+//       weather_today.innerHTML = `<h1>${weather}°C</h1>`;
+//       // //weather icon for all other countries ...
+//       //   let weather_icon = document.getElementById("weather_icon");
+//       console.log(data);
+//       //   weather_icon.src =
+//       //     "https://openweathermap.org/img/wn/" +
+//       //     data.list[0].weather[0].icon +
+//       //     "@2x.png";
+//           console.log(result.list[0].wind.speed);
+//           console.log(data);
+//       // weather descriptionnn
+//       //=> 1_speed
+//       let value1 = document.getElementById("value1");
+//       value1.innerHTML = `${data.wind.speed}${" km/h"}`;
+//       //=> 2_ pressure
+//       let value3 = document.getElementById("value3");
+//       value3.innerHTML = `${data.main.pressure}${" hPa"}`;
+//       //=> 3_ Humidity
+//       let value4 = document.getElementById("value4");
+//       value4.innerHTML = `${data.main.humidity}${" %"}`;
+//       // 4_reel feel
+//       let value2 = document.getElementById("value2");
+//       value2.innerHTML = `${data.main.feels_like}${" °C"}`;
+//       //=> 5_Sunrise
+//       let value5 = document.getElementById("value5");
+//       value5.innerHTML = `${data.sys.sunrise}${" UTC"}`;
+//       //=> 6_Sunset
+//       let value6 = document.getElementById("value6");
+//       value6.innerHTML = `${data.sys.sunset}${" UTC"}`;
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data:", error);
+//     });
+// });
+
+// Assuming fetchData is defined elsewhere in your code to make the API request
 input_Search.addEventListener("change", () => {
   const city = input_Search.value;
   const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
@@ -169,8 +247,25 @@ input_Search.addEventListener("change", () => {
       let cityName = document.getElementById("location");
       cityName.innerHTML = `<h1>${location}</h1>`;
       let weather_today = document.getElementById("weather_today");
-      weather = data.main.temp;
+      let weather = data.main.temp;
       weather_today.innerHTML = `<h1>${weather}°C</h1>`;
+
+      // Display weather icon
+      let weather_icon = document.getElementById("weather_icon");
+      weather_icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+      // Display other weather details
+      let value1 = document.getElementById("value1");
+      value1.innerHTML = `${data.wind.speed} km/h`;
+
+      let value2 = document.getElementById("value2");
+      value2.innerHTML = `${data.main.feels_like} °C`;
+
+      let value3 = document.getElementById("value3");
+      value3.innerHTML = `${data.main.pressure} hPa`;
+
+      let value4 = document.getElementById("value4");
+      value4.innerHTML = `${data.main.humidity} %`;
     })
     .catch((error) => {
       console.error("Error fetching data:", error);

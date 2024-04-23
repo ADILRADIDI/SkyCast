@@ -82,77 +82,76 @@
           <div
             class="flex justify-between items-center mb-5 m-auto font-bold mx-5 text-xl"
           >
-            <div id="today_date" class="ml-2"><p>1.1.2020</p></div>
-            <div id="time" class="mr-2"><p></p></div>
+            <div id="today_date" class="mr-2"><p></p></div>
+            <div id="time" class=""><p></p></div>
           </div>
           <div
-            class="flex justify-between items-center mb-7 m-auto font-bold mx-7 text-xl"
-          >
+            class="flex justify-between items-center mb-7 m-auto font-bold mx-7 text-xl">
             <div id="weather_today" class="text-3xl"></div>
             <div id="icon_cloud">
-              <img id="weather_icon" src ="img/sunnyDay.svg" alt="" />
+              <img id="weather_icon" src ="" alt="icon_weather" />
             </div>
           </div>
-          <div class="flex justify-between items-center m-auto mx-7 gap-3">
+          <div id="box-temp" class="flex justify-center mb-5 items-center m-auto gap-3">
             <div id="first_four">
               <div class="flex gap-3">
                 <p>Real Feel</p>
-                <p class="font-bold" id="value1">180</p>
+                <p class="font-bold" id="value2">180</p>
               </div>
               <div class="flex gap-3">
                 <p>Wind N-E.</p>
-                <p class="font-bold" id="value1">6-7km/h</p>
+                <p class="font-bold" id="value1"></p>
               </div>
               <div class="flex gap-3">
                 <p>Pressure</p>
-                <p class="font-bold" id="value1">100MB</p>
+                <p class="font-bold" id="value3"></p>
               </div>
               <div class="flex gap-3">
                 <p>Humidity</p>
-                <p class="font-bold" id="value1">51%</p>
+                <p class="font-bold" id="value4"></p>
               </div>
             </div>
-            <div>
+            <!-- <div>
               <div class="flex gap-3">
                 <p>Sunrise</p>
-                <p class="font-bold" id="value1">5:30AM</p>
+                <p class="font-bold" id="value5">5:30AM</p>
               </div>
               <div class="flex gap-3">
                 <p>Sunset</p>
-                <p class="font-bold" id="value1">6:45</p>
+                <p class="font-bold" id="value6">6:45</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <!-- five days future -->
         <div id="fiveDays" class="gap-3 flex">
           <!-- day 1 -->
           <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1  m-auto items-center justify-center block">
-            <p class="mb-10">Monday</p>
-            <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
-            <p class="mb-10" id="">10C</p>
+            <p id="dayOne" class="mb-10 text-lg"></p>
+            <img id="dayOneImg" class="mb-10" src="" alt="icon weather" />
+            <p class="mb-10" id="dayOneW"></p>
           </div>
           <!-- day 2 -->
           <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
-            <p class="mb-10">Tuesday</p>
+            <p id="dayTwo" class="mb-10 text-lg"></p>
             <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
             <p class="mb-10" id="">-2C</p>
           </div>
           <!-- day 3 -->
           <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
-            <p class="mb-10">wednesday</p>
+            <p id="dayThree" class="mb-10 text-lg"></p>
             <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
             <p class="mb-10" id="">36C</p>
           </div>
           <!-- day 4 -->
           <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
-            <p class="mb-10">Thursday</p>
+            <p id="dayFour" class="mb-10 text-lg"></p>
             <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
             <p class="mb-10" id="">-6C</p>
           </div>
           <!-- day 5 -->
           <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
-            <p class="mb-10">Friday</p>
+            <p id="dayFive" class="mb-10 text-lg"></p>
             <img class="mb-10" src="img/sunnyDay.svg" alt="icon weather" />
             <p class="mb-10" id="">0C</p>
           </div>
