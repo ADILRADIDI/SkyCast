@@ -45,7 +45,8 @@ function formatDate(date) {
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const fdate = `${year}-${month}-${day}`;
+  return fdate;
 }
 for (let i = 0; i < 6; i++) {
   today.setDate(today.getDate() + 1);
@@ -108,11 +109,29 @@ window.addEventListener("DOMContentLoaded", () => {
                 console.log(result2.name);
                 let weather_today = document.getElementById("weather_today");
                 weather_today.innerHTML = `<h1>${result2.main.temp}°C</h1>`;
+                // date current
+                let today_date = document.getElementById("today_date");
+                let fdate = new Date().toLocaleDateString();
+                today_date.innerHTML = `<h1>${fdate}</h1>`;
+                // time
+                let time = document.getElementById("time");
+                let ftime = new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                });
+                time.innerHTML = `<h1>${ftime}</h1>`;
+                //weather icon
+                let weather_icon = document.getElementById("weather_icon");
+                weather_icon.src =
+                  "https://openweathermap.org/img/wn/" +
+                  data.list[0].weather[0].icon +
+                  "@2x.png";
+                  //five details
+                  
               })
               .catch((error2) => {
                 console.error("Error fetching data:", error2);
               });
-
             location = result.city.name + "," + result.city.country;
             let cityName = document.getElementById("location");
             cityName.innerHTML = `<h1>${location}</h1>`;
@@ -146,7 +165,6 @@ input_Search.addEventListener("change", () => {
   const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
   fetchData(cityUrl)
     .then((data) => {
-      console.log(data);
       location = data.name + "," + data.sys.country;
       let cityName = document.getElementById("location");
       cityName.innerHTML = `<h1>${location}</h1>`;
