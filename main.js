@@ -52,9 +52,6 @@ for (let i = 0; i < 5; i++) {
   today.setDate(today.getDate() + 1);
   days.push(formatDate(today));
 }
-input_Search.addEventListener("change", function () {
-  console.log(days);
-});
 
 // api
 let latitude;
@@ -112,7 +109,6 @@ window.addEventListener("DOMContentLoaded", () => {
             // weather descriptionnn
             //=> 1_speed
             let value1 = document.getElementById("value1");
-            // console.log(result.list[0].wind.speed);
             value1.innerHTML = `${result.list[0].wind.speed}${" km/h"}`;
             //=> 2_ pressure
             let value3 = document.getElementById("value3");
@@ -124,27 +120,60 @@ window.addEventListener("DOMContentLoaded", () => {
             let value2 = document.getElementById("value2");
             value2.innerHTML = `${result.list[0].main.feels_like}${" °C"}`;
             // five days forecast
+            /* ----------------------------------------------------*/
             //day 1
             let dayOne = document.getElementById("dayOne");
             dayOne.innerHTML = days[0];
+            //icon day1
             let dayOneImg = document.getElementById("dayOneImg");
-            dayOneImg.src = `http://openweathermap.org/img/wn/${result.list[0].weather[0].icon}@2x.png`;
-            // let dayOneW = document.getElementById("dayOneW");
-            // console.log(result);
-            // dayOneWinnerHTML = `${result.list[0].main.temp}`;
+            dayOneImg.src = `http://openweathermap.org/img/wn/${result.list[8].weather[0].icon}@2x.png`;
+            console.log(result);
+            //weather day1
+            let dayOneW = document.getElementById("dayOneW");
+            dayOneW.innerHTML = `${result.list[0].main.temp}${" °C"}`;
+            /* ----------------------------------------------------*/
             //day 2
+            // Day 2
             let dayTwo = document.getElementById("dayTwo");
             dayTwo.innerHTML = days[1];
+            // Icon day 2
+            let dayTwoImg = document.getElementById("dayTwoImg");
+            dayTwoImg.src = `http://openweathermap.org/img/wn/${result.list[16].weather[0].icon}.png`;
+            // Weather day 2
+            let dayTwoW = document.getElementById("dayTwoW");
+            dayTwoW.innerHTML = `${result.list[5].main.temp} °C`;
+            /* ----------------------------------------------------*/
             //day 3
             let dayThree = document.getElementById("dayThree");
             dayThree.innerHTML = days[2];
+            // Icon day 2
+            let dayThreeImg = document.getElementById("dayThreeImg");
+            dayThreeImg.src = `http://openweathermap.org/img/wn/${result.list[24].weather[0].icon}.png`;
+            // Weather day 2
+            let dayThreeW = document.getElementById("dayThreeW");
+            dayThreeW.innerHTML = `${result.list[10].main.temp} °C`;
+            /* ----------------------------------------------------*/
             //day 4
             let dayFour = document.getElementById("dayFour");
             dayFour.innerHTML = days[3];
+            // Icon day 2
+            let dayFourImg = document.getElementById("dayFourImg");
+            dayFourImg.src = `http://openweathermap.org/img/wn/${result.list[32].weather[0].icon}.png`;
+            // Weather day 2
+            let dayFourW = document.getElementById("dayFourW");
+            dayFourW.innerHTML = `${result.list[15].main.temp} °C`;
+            /* ----------------------------------------------------*/
             //day 5
             let dayFive = document.getElementById("dayFive");
             dayFive.innerHTML = days[4];
-
+            // Icon day 2
+            let dayFiveImg = document.getElementById("dayFiveImg");
+            dayFiveImg.src = `http://openweathermap.org/img/wn/${result.list[39].weather[0].icon}.png`;
+            // Weather day 2
+            let dayFiveW = document.getElementById("dayFiveW");
+            dayFiveW.innerHTML = `${result.list[20].main.temp} °C`;
+            /* ----------------------------------------------------*/
+            //current-Weather
             const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
             fetchData(`${cityUrl}`)
               .then((result2) => {
@@ -250,22 +279,32 @@ input_Search.addEventListener("change", () => {
       let weather = data.main.temp;
       weather_today.innerHTML = `<h1>${weather}°C</h1>`;
 
-      // Display weather icon
+      //weather icon
       let weather_icon = document.getElementById("weather_icon");
       weather_icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
-      // Display other weather details
+      //weather details
       let value1 = document.getElementById("value1");
       value1.innerHTML = `${data.wind.speed} km/h`;
-
       let value2 = document.getElementById("value2");
       value2.innerHTML = `${data.main.feels_like} °C`;
-
       let value3 = document.getElementById("value3");
       value3.innerHTML = `${data.main.pressure} hPa`;
-
       let value4 = document.getElementById("value4");
       value4.innerHTML = `${data.main.humidity} %`;
+
+      // five days forecast
+      /* ----------------------------------------------------*/
+      // Day 1
+      // let dayOne = document.getElementById("dayOne");
+      // dayOne.innerHTML = `<h1>${data.list[8].dt_txt}</h1>`;
+      // // Weather icon day 1
+      // let dayOneImg = document.querySelectorAll(".dayOneImg");
+      // dayOneImg.src = `https://openweathermap.org/img/wn/${data.list[8].weather[0].icon}.png`;
+      // // Weather day 1
+      // let dayOneW = document.getElementById("dayOneW");
+      // dayOneW.innerHTML = `<h1>${data.main.temp}°C</h1>`;
+      /* ----------------------------------------------------*/
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
