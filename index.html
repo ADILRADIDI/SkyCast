@@ -42,7 +42,6 @@
             <option value="fahrenheit" class="font-bold italic">
               Fahrenheit
             </option>
-            <option value="kelvin" class="font-bold italic">Kelvin</option>
           </select>
           <div id="container_search" class="flex rounded-xl bg-gray-200">
             <a href="#" id="search_link">
@@ -71,13 +70,22 @@
     <!-- section main -->
     <main class="mx-2 rounded-3xl mt-5" id="main">
       <div><h1 class="font-bold text-2xl mx-7">Today</h1></div>
-      <div class="containerOne items-center justify-around m-auto block md:flex mt-10">
+      <div
+        class="containerOne items-center justify-around m-auto block md:flex mt-10"
+      >
         <!-- weather today -->
         <div id="Today" class="rounded-2xl">
-            <div class="location_exact flex items-center justify-center mb-5 m-auto font-bold">
-                <img src="img/location_black.svg" class="w-10" id="img_location" alt="location exactly">
-                <p  id="location"></p>
-            </div>
+          <div
+            class="location_exact flex items-center justify-center mb-5 m-auto font-bold"
+          >
+            <img
+              src="img/location_black.svg"
+              class="w-10"
+              id="img_location"
+              alt="location exactly"
+            />
+            <p id="location"></p>
+          </div>
           <!-- box for weather today three divs -->
           <div
             class="flex justify-between items-center mb-5 m-auto font-bold mx-5 text-xl"
@@ -86,13 +94,17 @@
             <div id="time" class=""><p></p></div>
           </div>
           <div
-            class="flex justify-between items-center mb-7 m-auto font-bold mx-7 text-xl">
+            class="flex justify-between items-center mb-7 m-auto font-bold mx-7 text-xl"
+          >
             <div id="weather_today" class="text-3xl"></div>
             <div id="icon_cloud">
-              <img id="weather_icon" src ="" alt="icon_weather" />
+              <img id="weather_icon" src="" alt="icon_weather" />
             </div>
           </div>
-          <div id="box-temp" class="flex justify-center mb-5 items-center m-auto gap-3">
+          <div
+            id="box-temp"
+            class="flex justify-center mb-5 items-center m-auto gap-3"
+          >
             <div id="first_four">
               <div class="flex gap-3">
                 <p>Real Feel</p>
@@ -126,40 +138,60 @@
         <!-- five days future -->
         <div id="fiveDays" class="gap-3 flex">
           <!-- day 1 -->
-          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1  m-auto items-center justify-center block">
+          <div
+            id=""
+            class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 m-auto items-center justify-center block"
+          >
             <p id="dayOne" class="mb-10 text-lg"></p>
-            <img id="dayOneImg" class="dayOneImg mb-10" src="" alt="icon weather" />
+            <img
+              id="dayOneImg"
+              class="dayOneImg mb-10"
+              src=""
+              alt="icon weather"
+            />
             <p class="mb-10" id="dayOneW"></p>
           </div>
           <!-- day 2 -->
-          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+          <div
+            id=""
+            class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center"
+          >
             <p id="dayTwo" class="mb-10 text-lg"></p>
             <img id="dayTwoImg" class="mb-10" src="" alt="icon weather" />
             <p class="mb-10" id="dayTwoW"></p>
           </div>
           <!-- day 3 -->
-          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+          <div
+            id=""
+            class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center"
+          >
             <p id="dayThree" class="mb-10 text-lg"></p>
             <img id="dayThreeImg" class="mb-10" src="" alt="icon weather" />
             <p id="dayThreeW" class="mb-10" id=""></p>
           </div>
           <!-- day 4 -->
-          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+          <div
+            id=""
+            class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center"
+          >
             <p id="dayFour" class="mb-10 text-lg"></p>
             <img id="dayFourImg" class="mb-10" src="" alt="icon weather" />
             <p id="dayFourW" class="mb-10"></p>
           </div>
           <!-- day 5 -->
-          <div id="" class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center">
+          <div
+            id=""
+            class="fiveOne font-bold w-28 text-xl rounded-2xl py-2 px-1 block m-auto items-center justify-center"
+          >
             <p id="dayFive" class="mb-10 text-lg"></p>
             <img id="dayFiveImg" class="mb-10" src="" alt="icon weather" />
             <p id="dayFiveW" class="mb-10" id=""></p>
           </div>
         </div>
-
       </div>
     </main>
-    <!-- link my files javascript -->
+    <!-- link my files javascript & chart js for canvas-->
     <script type="module" src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </body>
 </html>
