@@ -8,6 +8,14 @@ search.addEventListener("click", () => {
     input_Search.style.display = "none";
   }
 });
+// your location
+// let current_location = document.getElementById("current_location");
+// current_location.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   let current_location = document.getElementById("current_location");
+//   current_location.src = "index.html";
+//   window.location.reload();
+// });
 
 // event broghtness and dark mode
 let btn_brightness = document.getElementById("brightness_icon");
@@ -52,7 +60,15 @@ for (let i = 0; i < 5; i++) {
   today.setDate(today.getDate() + 1);
   days.push(formatDate(today));
 }
-
+// //btn select option celsius to FEH...
+// let celsius = document.getElementById("celsius");
+// console.log(celsius.textContent);
+// let fahrenheit = document.getElementById("fahrenheit");
+// if ((celsius.textContent = celsius)) {
+//   let metric = "units=metric";
+// } else {
+//   let metric = "units=imperial";
+// }
 // api
 let latitude;
 let longitude;
@@ -68,19 +84,6 @@ let fetchData = async function (url) {
     const response = await fetch(`${url}`);
     const data = await response.json();
     return data;
-    // if (tpe === true) {
-    //   location = data.city.name + "," + data.city.country;
-    //   let cityName = document.getElementById("location");
-    //   cityName.innerHTML = `<h1>${location}</h1>`;
-    // } else {
-    //   console.log(data);
-    //   location = data.name + "," + data.sys.country;
-    //   let cityName = document.getElementById("location");
-    //   cityName.innerHTML = `<h1>${location}</h1>`;
-    //   // let weather_today = document.getElementById("weather_today");
-    //   // weather = data.main.temp;
-    //   // weather_today.innerHTML = `<h1>${weather}°C</h1>`;
-    // }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -367,9 +370,57 @@ input_Search.addEventListener("change", () => {
       const dayFiveW = document.getElementById("dayFourW");
       dayFiveW.innerHTML = `<h1>${data.list[39].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
+      console.log(data.list[0]);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
-          // input_Search.value = " ";
+  // for clearr input after search
+  // input_Search.value = " ";
 });
+
+/*----------------------------------> CHART JS <--------------------------------*/
+// Fetch data and create chart
+(async function () {
+  let input_Search = document.getElementById("input_Search");
+  const cityName = "paris";
+  console.log(cityName);
+  const data = await fetchData(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${api_key}&${metric}`
+  );
+  const xValues = [];
+  const date1 = new Date();
+  const options = { weekday: "long" };
+  const Today = date1.toLocaleDateString("en-US", options);
+  xValues.push(Today);
+  // Set next five days
+  for (let i = 1; i <= 5; i++) {
+    const nextDate = new Date(date1);
+    nextDate.setDate(date1.getDate() + i);
+    const nextDay = nextDate.toLocaleDateString("en-US", options);
+    xValues.push(nextDay);
+  }
+  let chartData = [data.list[0].main.temp];
+  console.log(chartData);
+  for (let i = 1; i <= 5; i++) {
+    chartData.push(data.list[i].main.temp);
+  }
+  const chartDataValues = chartData;
+  new Chart("myChart", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          data: chartDataValues,
+          borderColor: "blue",
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+    },
+  });
+})();
+/*----------------------------------> CHART JS fin<--------------------------------*/

@@ -71,7 +71,7 @@
     <main class="mx-2 rounded-3xl mt-5" id="main">
       <div><h1 class="font-bold text-2xl mx-7">Today</h1></div>
       <div
-        class="containerOne items-center justify-around m-auto block md:flex mt-10"
+        class="containerOne items-center justify-around m-auto block md:flex mt-10 mb-10"
       >
         <!-- weather today -->
         <div id="Today" class="rounded-2xl">
@@ -189,6 +189,14 @@
           </div>
         </div>
       </div>
+      <div id="chartJs">
+        <canvas
+          id="myChart"
+          style="height: 300px; width: 100%; max-width: 900px"
+          class="py-5 px-5 rounded-2xl"
+        ></canvas>
+      </div>
+      <div id="waves"><img src="img/wave.svg" class="w-full" alt="" /></div>
     </main>
     <!-- link my files javascript & chart js for canvas-->
     <script type="module" src="main.js"></script>

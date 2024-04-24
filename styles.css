@@ -5,20 +5,17 @@ body {
   background-color: black;
 }
 #header,
-#main
-{
+#main {
   background-color: #67c6e3;
-  box-shadow:
-  2.4px 2.8px 1px rgba(255, 255, 255, 0.02),
-  5.4px 6.3px 2.2px rgba(255, 255, 255, 0.029),
-  9.2px 10.6px 3.7px rgba(0, 0, 0, 0.036),
-  14.3px 16.4px 5.7px rgba(0, 0, 0, 0.042),
-  21.1px 24.3px 8.5px rgba(0, 0, 0, 0.048),
-  31px 35.7px 12.5px rgba(0, 0, 0, 0.054),
-  46.5px 53.6px 18.7px rgba(0, 0, 0, 0.061),
-  74.2px 85.4px 29.9px rgba(0, 0, 0, 0.07),
-  139px 160px 56px rgba(0, 0, 0, 0.09)
-;
+  box-shadow: 2.4px 2.8px 1px rgba(255, 255, 255, 0.02),
+    5.4px 6.3px 2.2px rgba(255, 255, 255, 0.029),
+    9.2px 10.6px 3.7px rgba(0, 0, 0, 0.036),
+    14.3px 16.4px 5.7px rgba(0, 0, 0, 0.042),
+    21.1px 24.3px 8.5px rgba(0, 0, 0, 0.048),
+    31px 35.7px 12.5px rgba(0, 0, 0, 0.054),
+    46.5px 53.6px 18.7px rgba(0, 0, 0, 0.061),
+    74.2px 85.4px 29.9px rgba(0, 0, 0, 0.07),
+    139px 160px 56px rgba(0, 0, 0, 0.09);
 }
 #container_search,
 #input_search,
@@ -26,15 +23,15 @@ body {
 #current_location {
   background-color: #378ce7;
 }
-#Today{
-    background-color: #5356FF;
+#Today {
+  background-color: #5356ff;
 }
 #input_search {
   display: none;
 }
 
 .fiveOne {
-  background-color: #5356FF;
+  background-color: #5356ff;
   height: 280px;
   flex-direction: column;
   align-items: center;
@@ -44,15 +41,10 @@ body {
   background-color: #67c6e3;
   border: 2px solid #5356ff;
 }
-
-/* box-shadow:
-  2.4px 2.8px 1px rgba(0, 0, 0, 0.02),
-  5.4px 6.3px 2.2px rgba(0, 0, 0, 0.029),
-  9.2px 10.6px 3.7px rgba(0, 0, 0, 0.036),
-  14.3px 16.4px 5.7px rgba(0, 0, 0, 0.042),
-  21.1px 24.3px 8.5px rgba(0, 0, 0, 0.048),
-  31px 35.7px 12.5px rgba(0, 0, 0, 0.054),
-  46.5px 53.6px 18.7px rgba(0, 0, 0, 0.061),
-  74.2px 85.4px 29.9px rgba(0, 0, 0, 0.07),
-  139px 160px 56px rgba(0, 0, 0, 0.09)
-; */
+#myChart {
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  background-color: #dff5ff;
+}
