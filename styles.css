@@ -6,7 +6,7 @@ body {
 }
 #header,
 #main {
-  background-color: #67c6e3;
+  background-color: #f6e6cf;
   box-shadow: 2.4px 2.8px 1px rgba(255, 255, 255, 0.02),
     5.4px 6.3px 2.2px rgba(255, 255, 255, 0.029),
     9.2px 10.6px 3.7px rgba(0, 0, 0, 0.036),
@@ -21,30 +21,40 @@ body {
 #input_search,
 #select,
 #current_location {
-  background-color: #378ce7;
+  background-color: #ffc16a;
 }
 #Today {
-  background-color: #5356ff;
+  background-color: #8cbd62;
 }
 #input_search {
   display: none;
 }
 
 .fiveOne {
-  background-color: #5356ff;
-  height: 280px;
+  background-color: #8cbd62;
+  height: 180px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .fiveOne:hover {
-  background-color: #67c6e3;
-  border: 2px solid #5356ff;
+  background-color: #f6e6cf;
+  border: 2px solid #8cbd62;
 }
 #myChart {
   justify-content: center;
   text-align: center;
   margin: 0 auto;
   display: flex;
-  background-color: #dff5ff;
+  background-color: white;
 }
+#title {
+  color: #ffc16a;
+}
+
+/* media query for tablette 
+@media screen and (max-width: 1125px) {
+  #today{
+    display: flex;
+  }
+} */

@@ -9,13 +9,11 @@ search.addEventListener("click", () => {
   }
 });
 // your location
-// let current_location = document.getElementById("current_location");
-// current_location.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   let current_location = document.getElementById("current_location");
-//   current_location.src = "index.html";
-//   window.location.reload();
-// });
+let current_location = document.getElementById("current_location");
+current_location.addEventListener("click", function (event) {
+  event.preventDefault();
+  window.location.reload();
+});
 
 // event broghtness and dark mode
 let btn_brightness = document.getElementById("brightness_icon");
@@ -38,7 +36,7 @@ btn_brightness.addEventListener("click", () => {
     img_dark.src = "img/Sun.svg";
     img_search.src = "img/search_black.svg";
     img_location.src = "img/location_black.svg";
-    bd.style.color = "black";
+    bd.style.color = "white";
     bd.style.backgroundColor = "black";
   }
 });
@@ -88,7 +86,7 @@ let fetchData = async function (url) {
     console.error("Error fetching data:", error);
   }
 };
-// five value in box temperature...
+// five value in box chartData...
 
 window.addEventListener("DOMContentLoaded", () => {
   if ("geolocation" in navigator) {
@@ -100,9 +98,8 @@ window.addEventListener("DOMContentLoaded", () => {
         // fetchData
         fetchData(`${geoUrl}`)
           .then((result) => {
-            console.log(result);
-            console.log(result.city.name);
             const city = result.city.name;
+            displayForCast(city);
             //weather icon
             let weather_icon = document.getElementById("weather_icon");
             weather_icon.src =
@@ -136,7 +133,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             //icon day1
             let dayOneImg = document.getElementById("dayOneImg");
-            dayOneImg.src = `http://openweathermap.org/img/wn/${result.list[8].weather[0].icon}@2x.png`;
+            dayOneImg.src = `http://openweathermap.org/img/wn/${result.list[0].weather[0].icon}@2x.png`;
             console.log(result);
             //weather day1
             let dayOneW = document.getElementById("dayOneW");
@@ -151,7 +148,7 @@ window.addEventListener("DOMContentLoaded", () => {
             dayTwo.innerHTML = `<h1>${fdate}</h1>`;
             // Icon day 2
             let dayTwoImg = document.getElementById("dayTwoImg");
-            dayTwoImg.src = `http://openweathermap.org/img/wn/${result.list[16].weather[0].icon}.png`;
+            dayTwoImg.src = `http://openweathermap.org/img/wn/${result.list[5].weather[0].icon}.png`;
             // Weather day 2
             let dayTwoW = document.getElementById("dayTwoW");
             dayTwoW.innerHTML = `${result.list[5].main.temp} °C`;
@@ -164,7 +161,7 @@ window.addEventListener("DOMContentLoaded", () => {
             dayThree.innerHTML = `<h1>${fdate}</h1>`;
             // Icon day 2
             let dayThreeImg = document.getElementById("dayThreeImg");
-            dayThreeImg.src = `http://openweathermap.org/img/wn/${result.list[24].weather[0].icon}.png`;
+            dayThreeImg.src = `http://openweathermap.org/img/wn/${result.list[13].weather[0].icon}.png`;
             // Weather day 2
             let dayThreeW = document.getElementById("dayThreeW");
             dayThreeW.innerHTML = `${result.list[10].main.temp} °C`;
@@ -177,7 +174,7 @@ window.addEventListener("DOMContentLoaded", () => {
             dayFour.innerHTML = `<h1>${fdate}</h1>`;
             // Icon day 2
             let dayFourImg = document.getElementById("dayFourImg");
-            dayFourImg.src = `http://openweathermap.org/img/wn/${result.list[32].weather[0].icon}.png`;
+            dayFourImg.src = `http://openweathermap.org/img/wn/${result.list[20].weather[0].icon}.png`;
             // Weather day 2
             let dayFourW = document.getElementById("dayFourW");
             dayFourW.innerHTML = `${result.list[15].main.temp} °C`;
@@ -190,7 +187,7 @@ window.addEventListener("DOMContentLoaded", () => {
             dayFive.innerHTML = `<h1>${fdate}</h1>`;
             // Icon day 2
             let dayFiveImg = document.getElementById("dayFiveImg");
-            dayFiveImg.src = `http://openweathermap.org/img/wn/${result.list[39].weather[0].icon}.png`;
+            dayFiveImg.src = `http://openweathermap.org/img/wn/${result.list[29].weather[0].icon}.png`;
             // Weather day 2
             let dayFiveW = document.getElementById("dayFiveW");
             dayFiveW.innerHTML = `${result.list[20].main.temp} °C`;
@@ -246,53 +243,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// event input search..
-// input_Search.addEventListener("change", () => {
-//   const city = input_Search.value;
-//   const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
-//   fetchData(cityUrl)
-//     .then((data) => {
-//       location = data.name + "," + data.sys.country;
-//       let cityName = document.getElementById("location");
-//       cityName.innerHTML = `<h1>${location}</h1>`;
-//       let weather_today = document.getElementById("weather_today");
-//       weather = data.main.temp;
-//       weather_today.innerHTML = `<h1>${weather}°C</h1>`;
-//       // //weather icon for all other countries ...
-//       //   let weather_icon = document.getElementById("weather_icon");
-//       console.log(data);
-//       //   weather_icon.src =
-//       //     "https://openweathermap.org/img/wn/" +
-//       //     data.list[0].weather[0].icon +
-//       //     "@2x.png";
-//           console.log(result.list[0].wind.speed);
-//           console.log(data);
-//       // weather descriptionnn
-//       //=> 1_speed
-//       let value1 = document.getElementById("value1");
-//       value1.innerHTML = `${data.wind.speed}${" km/h"}`;
-//       //=> 2_ pressure
-//       let value3 = document.getElementById("value3");
-//       value3.innerHTML = `${data.main.pressure}${" hPa"}`;
-//       //=> 3_ Humidity
-//       let value4 = document.getElementById("value4");
-//       value4.innerHTML = `${data.main.humidity}${" %"}`;
-//       // 4_reel feel
-//       let value2 = document.getElementById("value2");
-//       value2.innerHTML = `${data.main.feels_like}${" °C"}`;
-//       //=> 5_Sunrise
-//       let value5 = document.getElementById("value5");
-//       value5.innerHTML = `${data.sys.sunrise}${" UTC"}`;
-//       //=> 6_Sunset
-//       let value6 = document.getElementById("value6");
-//       value6.innerHTML = `${data.sys.sunset}${" UTC"}`;
-//     })
-//     .catch((error) => {
-//       console.error("Error fetching data:", error);
-//     });
-// });
-
-// Assuming fetchData is defined elsewhere in your code to make the API request
 input_Search.addEventListener("change", () => {
   const city = input_Search.value;
   const cityUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&${metric}`;
@@ -371,6 +321,7 @@ input_Search.addEventListener("change", () => {
       dayFiveW.innerHTML = `<h1>${data.list[39].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       console.log(data.list[0]);
+      displayForCast(location);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -380,47 +331,65 @@ input_Search.addEventListener("change", () => {
 });
 
 /*----------------------------------> CHART JS <--------------------------------*/
-// Fetch data and create chart
-(async function () {
-  let input_Search = document.getElementById("input_Search");
-  const cityName = "paris";
-  console.log(cityName);
-  const data = await fetchData(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${api_key}&${metric}`
-  );
-  const xValues = [];
-  const date1 = new Date();
-  const options = { weekday: "long" };
-  const Today = date1.toLocaleDateString("en-US", options);
-  xValues.push(Today);
-  // Set next five days
-  for (let i = 1; i <= 5; i++) {
-    const nextDate = new Date(date1);
-    nextDate.setDate(date1.getDate() + i);
-    const nextDay = nextDate.toLocaleDateString("en-US", options);
-    xValues.push(nextDay);
-  }
-  let chartData = [data.list[0].main.temp];
-  console.log(chartData);
-  for (let i = 1; i <= 5; i++) {
-    chartData.push(data.list[i].main.temp);
-  }
-  const chartDataValues = chartData;
-  new Chart("myChart", {
-    type: "line",
-    data: {
-      labels: xValues,
-      datasets: [
-        {
-          data: chartDataValues,
-          borderColor: "blue",
-          fill: false,
+function displayForCast(cityName) {
+  let forcastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${api_key}&${metric}`;
+  fetch(forcastUrl)
+    .then((response) => response.json())
+    .then((data1) => {
+      console.log(data1);
+      const forecastByDate = [];
+      const fiveForecastDay = data1.list.filter((item) => {
+        const date = new Date(item.dt_txt).getDate();
+        if (!forecastByDate.includes(date)) {
+          return forecastByDate.push(date);
+        }
+      });
+      // filtrer DATE
+      const forecastsDays = fiveForecastDay.map((el) => {
+        const date = new Date(el.dt_txt).toLocaleString("en-US", {
+          weekday: "long",
+        });
+        return date;
+      });
+      forecastsDays.forEach((el) => {
+        console.log("Date:", el.date);
+      });
+      //filtrer (weather)
+      const forecastsTemp = fiveForecastDay.map((el) => {
+        const chartData = el.main.temp;
+        return chartData;
+      });
+      forecastsTemp.forEach((el) => {
+        console.log("Température:", el.chartData);
+      });
+
+      const ctx = document.getElementById("myChart");
+      console.log(ctx);
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: forecastsDays,
+          datasets: [
+            {
+              label: "Weather",
+              data: forecastsTemp,
+              borderWidth: 5,
+              borderColor: "#FFC16A"
+            },
+          ],
         },
-      ],
-    },
-    options: {
-      legend: { display: false },
-    },
-  });
-})();
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching weather data:", error);
+      alert("City not found. Please try again.");
+    });
+}
 /*----------------------------------> CHART JS fin<--------------------------------*/
