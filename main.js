@@ -81,6 +81,7 @@ let fetchData = async function (url) {
     console.log(url);
     const response = await fetch(`${url}`);
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -251,6 +252,7 @@ input_Search.addEventListener("change", () => {
       console.log(data);
       const location = data.city.name + "," + data.city.country;
       const cityName = document.getElementById("location");
+      displayForCast(data.city.name);
       cityName.innerHTML = `<h1>${location}</h1>`;
       const weather_today = document.getElementById("weather_today");
       const weather = data.list[0].main.temp;
@@ -321,7 +323,7 @@ input_Search.addEventListener("change", () => {
       dayFiveW.innerHTML = `<h1>${data.list[29].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       console.log(data.list[0]);
-      displayForCast(location);
+      // displayForCast(location);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -331,20 +333,21 @@ input_Search.addEventListener("change", () => {
 });
 
 /*----------------------------------> CHART JS <--------------------------------*/
+
 function displayForCast(cityName) {
-  let forcastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${api_key}&${metric}`;
+  const forcastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${api_key}&${metric}`;
   fetch(forcastUrl)
     .then((response) => response.json())
-    .then((data1) => {
-      console.log(data1);
+    .then((data) => {
+      console.log(data);
       const forecastByDate = [];
-      const fiveForecastDay = data1.list.filter((item) => {
-        const date = new Date(item.dt_txt).getDate();
+      const fiveForecastDay = data.list.filter((responseLigne) => {
+        const date = new Date(responseLigne.dt_txt).getDate();
         if (!forecastByDate.includes(date)) {
           return forecastByDate.push(date);
         }
       });
-      // filtrer DATE
+      // filtrer les dates
       const forecastsDays = fiveForecastDay.map((el) => {
         const date = new Date(el.dt_txt).toLocaleString("en-US", {
           weekday: "long",
@@ -354,38 +357,49 @@ function displayForCast(cityName) {
       forecastsDays.forEach((el) => {
         console.log("Date:", el.date);
       });
-      //filtrer (weather)
+      //filtrer par température
       const forecastsTemp = fiveForecastDay.map((el) => {
-        const chartData = el.main.temp;
-        return chartData;
+        const temperature = el.main.temp;
+        return temperature;
       });
       forecastsTemp.forEach((el) => {
-        console.log("Température:", el.chartData);
+        console.log("Température:", el.temperature);
       });
-
+      // Récupérer l'élément canvas
       const ctx = document.getElementById("myChart");
-      console.log(ctx);
-      new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: forecastsDays,
-          datasets: [
-            {
-              label: "Weather",
-              data: forecastsTemp,
-              borderWidth: 5,
-              borderColor: "#FFC16A"
-            },
-          ],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
+      // Vérifier si l'élément canvas existe
+      if (ctx) {
+        const existingChart = Chart.getChart(ctx);
+        if (existingChart) {
+          existingChart.destroy();
+        }
+        // Créer un nouveau graphique
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: forecastsDays,
+            datasets: [
+              {
+                label: "WEATHER",
+                data: forecastsTemp,
+                borderWidth: 2,
+                borderColor: "#FFC16A",
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
             },
           },
-        },
-      });
+        });
+      } else {
+        console.error(
+          "L'élément canvas avec l'ID 'myChart' n'a pas été trouvé."
+        );
+      }
     })
     .catch((error) => {
       console.error("Error fetching weather data:", error);
