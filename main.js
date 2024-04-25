@@ -278,7 +278,7 @@ input_Search.addEventListener("change", () => {
       dayOneImg.src = `https://openweathermap.org/img/wn/${data.list[8].weather[0].icon}.png`;
       // Weather day 1
       const dayOneW = document.getElementById("dayOneW");
-      dayOneW.innerHTML = `<h1>${data.list[8].main.temp}°C</h1>`;
+      dayOneW.innerHTML = `<h1>${data.list[0].main.temp}°C</h1>`;
       /* ----------------------------------------------------------------*/
       // day2
       const dayTwo = document.getElementById("dayTwo");
@@ -288,7 +288,7 @@ input_Search.addEventListener("change", () => {
       dayTwoImg.src = `https://openweathermap.org/img/wn/${data.list[16].weather[0].icon}.png`;
       //weather day2
       const dayTwoW = document.getElementById("dayTwoW");
-      dayTwoW.innerHTML = `<h1>${data.list[16].main.temp}°C</h1>`;
+      dayTwoW.innerHTML = `<h1>${data.list[5].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       // day2
       const dayThree = document.getElementById("dayThree");
@@ -298,7 +298,7 @@ input_Search.addEventListener("change", () => {
       dayThreeImg.src = `https://openweathermap.org/img/wn/${data.list[24].weather[0].icon}.png`;
       //weather day2
       const dayThreeW = document.getElementById("dayThreeW");
-      dayThreeW.innerHTML = `<h1>${data.list[24].main.temp}°C</h1>`;
+      dayThreeW.innerHTML = `<h1>${data.list[13].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       //day3
       const dayFour = document.getElementById("dayFour");
@@ -308,7 +308,7 @@ input_Search.addEventListener("change", () => {
       dayFourImg.src = `https://openweathermap.org/img/wn/${data.list[32].weather[0].icon}.png`;
       //weather day2
       const dayFourW = document.getElementById("dayFourW");
-      dayFourW.innerHTML = `<h1>${data.list[32].main.temp}°C</h1>`;
+      dayFourW.innerHTML = `<h1>${data.list[21].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       //day4
       const dayFive = document.getElementById("dayFive");
@@ -318,7 +318,7 @@ input_Search.addEventListener("change", () => {
       dayFiveImg.src = `https://openweathermap.org/img/wn/${data.list[39].weather[0].icon}.png`;
       //weather day2
       const dayFiveW = document.getElementById("dayFourW");
-      dayFiveW.innerHTML = `<h1>${data.list[39].main.temp}°C</h1>`;
+      dayFiveW.innerHTML = `<h1>${data.list[29].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       console.log(data.list[0]);
       displayForCast(location);
