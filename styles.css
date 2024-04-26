@@ -41,18 +41,22 @@ body {
   background-color: #f6e6cf;
   border: 2px solid #8cbd62;
 }
-#myChart {
+#chartJs{
   justify-content: center;
   text-align: center;
   margin: 0 auto;
   display: flex;
   background-color: white;
   height: 100%;
-  width: 50%;
+  max-width: 70%;
+}
+#myChart{
+  max-width: 500px;
+  max-height: 300px;
 }
 /* .container1 {
-  height:400px ;
-  width: 90%;
+  height:50%;
+  width: auto;
 } */
 #title {
   color: #ffc16a;
