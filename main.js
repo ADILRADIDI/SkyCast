@@ -99,7 +99,6 @@ window.addEventListener("DOMContentLoaded", () => {
         // fetchData
         fetchData(`${geoUrl}`)
           .then((result) => {
-            
             const city = result.city.name;
             displayForCast(city);
             //weather icon
@@ -132,6 +131,13 @@ window.addEventListener("DOMContentLoaded", () => {
             fdate.setDate(fdate.getDate() + 1);
             fdate = fdate.toLocaleDateString("en-US", options);
             dayOne.innerHTML = `<h1>${fdate}</h1>`;
+            //background
+            let dayBg1 = document.getElementById("d1");
+            if (result.list[0].main.temp < 20) {
+              dayBg1.style.backgroundColor = "blue";
+            } else {
+              dayBg1.style.backgroundColor = "gray";
+            }
 
             //icon day1
             let dayOneImg = document.getElementById("dayOneImg");
@@ -154,6 +160,13 @@ window.addEventListener("DOMContentLoaded", () => {
             // Weather day 2
             let dayTwoW = document.getElementById("dayTwoW");
             dayTwoW.innerHTML = `${result.list[5].main.temp} °C`;
+            //day 2
+            let dayBg2 = document.getElementById("d2");
+            if (result.list[5].main.temp < 20) {
+              dayBg2.style.backgroundColor = "blue";
+            } else {
+              dayBg2.style.backgroundColor = "gray";
+            }
             /* ----------------------------------------------------*/
             //day 3
             let dayThree = document.getElementById("dayThree");
@@ -161,12 +174,19 @@ window.addEventListener("DOMContentLoaded", () => {
             fdate.setDate(fdate.getDate() + 3);
             fdate = fdate.toLocaleDateString("en-US", options);
             dayThree.innerHTML = `<h1>${fdate}</h1>`;
-            // Icon day 2
+            // Icon day 3
             let dayThreeImg = document.getElementById("dayThreeImg");
             dayThreeImg.src = `http://openweathermap.org/img/wn/${result.list[13].weather[0].icon}.png`;
-            // Weather day 2
+            // Weather day 3
             let dayThreeW = document.getElementById("dayThreeW");
             dayThreeW.innerHTML = `${result.list[10].main.temp} °C`;
+            //day 3
+            let dayBg3 = document.getElementById("d3");
+            if (result.list[13].main.temp < 20) {
+              dayBg3.style.backgroundColor = "blue";
+            } else {
+              dayBg3.style.backgroundColor = "gray";
+            }
             /* ----------------------------------------------------*/
             //day 4
             let dayFour = document.getElementById("dayFour");
@@ -174,12 +194,19 @@ window.addEventListener("DOMContentLoaded", () => {
             fdate.setDate(fdate.getDate() + 4);
             fdate = fdate.toLocaleDateString("en-US", options);
             dayFour.innerHTML = `<h1>${fdate}</h1>`;
-            // Icon day 2
+            // Icon day 4
             let dayFourImg = document.getElementById("dayFourImg");
             dayFourImg.src = `http://openweathermap.org/img/wn/${result.list[20].weather[0].icon}.png`;
-            // Weather day 2
+            // Weather day 4
             let dayFourW = document.getElementById("dayFourW");
             dayFourW.innerHTML = `${result.list[15].main.temp} °C`;
+            //day 4
+            let dayBg4 = document.getElementById("d4");
+            if (result.list[20].main.temp < 20) {
+              dayBg4.style.backgroundColor = "blue";
+            } else {
+              dayBg4.style.backgroundColor = "gray";
+            }
             /* ----------------------------------------------------*/
             //day 5
             let dayFive = document.getElementById("dayFive");
@@ -187,12 +214,19 @@ window.addEventListener("DOMContentLoaded", () => {
             fdate.setDate(fdate.getDate() + 5);
             fdate = fdate.toLocaleDateString("en-US", options);
             dayFive.innerHTML = `<h1>${fdate}</h1>`;
-            // Icon day 2
+            // Icon day 5
             let dayFiveImg = document.getElementById("dayFiveImg");
             dayFiveImg.src = `http://openweathermap.org/img/wn/${result.list[29].weather[0].icon}.png`;
-            // Weather day 2
+            // Weather day 5
             let dayFiveW = document.getElementById("dayFiveW");
             dayFiveW.innerHTML = `${result.list[20].main.temp} °C`;
+            //day 4
+            let dayBg5 = document.getElementById("d5");
+            if (result.list[29].main.temp < 20) {
+              dayBg5.style.backgroundColor = "blue";
+            } else {
+              dayBg5.style.backgroundColor = "gray";
+            }
             /* ----------------------------------------------------*/
             //current-Weather
             const cityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&${metric}`;
@@ -219,8 +253,8 @@ window.addEventListener("DOMContentLoaded", () => {
                 // -----change background -------
                 let mainDiv = document.getElementById("Today");
                 if (result2.main.temp < 20) {
-                  mainDiv.style.backgroundColor = "bl";
-                }// else for temperature pas claire.. 
+                  mainDiv.style.backgroundColor = "blue";
+                } // else for temperature pas claire..
                 else {
                   mainDiv.style.backgroundColor = "gray";
                 }
@@ -291,6 +325,43 @@ input_Search.addEventListener("change", () => {
       // Weather day 1
       const dayOneW = document.getElementById("dayOneW");
       dayOneW.innerHTML = `<h1>${data.list[0].main.temp}°C</h1>`;
+      //
+      //all five days background animation
+      //day 1
+      let dayBg1 = document.getElementById("d1");
+      if (data.list[0].main.temp < 20) {
+        dayBg1.style.backgroundColor = "blue";
+      } else {
+        dayBg1.style.backgroundColor = "gray";
+      }
+      //day 2
+      let dayBg2 = document.getElementById("d2");
+      if (data.list[5].main.temp < 20) {
+        dayBg2.style.backgroundColor = "blue";
+      } else {
+        dayBg2.style.backgroundColor = "gray";
+      }
+      //day 3
+      let dayBg3 = document.getElementById("d3");
+      if (data.list[13].main.temp < 20) {
+        dayBg3.style.backgroundColor = "blue";
+      } else {
+        dayBg3.style.backgroundColor = "gray";
+      }
+      // day 4
+      let dayBg4 = document.getElementById("d4");
+      if (data.list[20].main.temp < 20) {
+        dayBg4.style.backgroundColor = "blue";
+      } else {
+        dayBg4.style.backgroundColor = "gray";
+      }
+      //day 5
+      let dayBg5 = document.getElementById("d5");
+      if (data.list[29].main.temp < 20) {
+        dayBg5.style.backgroundColor = "blue";
+      } else {
+        dayBg5.style.backgroundColor = "gray";
+      }
       /* ----------------------------------------------------------------*/
       // day2
       const dayTwo = document.getElementById("dayTwo");
