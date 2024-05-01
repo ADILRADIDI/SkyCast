@@ -217,9 +217,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 });
                 time.innerHTML = `<h1>${ftime}</h1>`;
                 // -----change background -------
-                let mainDiv = document.getElementById("main");
+                let mainDiv = document.getElementById("Today");
                 if (result2.main.temp < 20) {
-                  mainDiv.style.backgroundColor = "blue";
+                  mainDiv.style.backgroundColor = "bl";
                 }// else for temperature pas claire.. 
                 else {
                   mainDiv.style.backgroundColor = "gray";
@@ -335,7 +335,7 @@ input_Search.addEventListener("change", () => {
       console.log(data.list[0]);
       // displayForCast(location);
       // -----change background -------
-      let mainDiv = document.getElementById("main");
+      let mainDiv = document.getElementById("Today");
       if (data.list[0].main.temp < 20) {
         mainDiv.style.backgroundColor = "blue";
       } else {
