@@ -99,6 +99,7 @@ window.addEventListener("DOMContentLoaded", () => {
         // fetchData
         fetchData(`${geoUrl}`)
           .then((result) => {
+            
             const city = result.city.name;
             displayForCast(city);
             //weather icon
@@ -215,6 +216,15 @@ window.addEventListener("DOMContentLoaded", () => {
                   minute: "2-digit",
                 });
                 time.innerHTML = `<h1>${ftime}</h1>`;
+                // -----change background -------
+                let mainDiv = document.getElementById("main");
+                if (result2.main.temp < 20) {
+                  mainDiv.style.backgroundColor = "blue";
+                }// else for temperature pas claire.. 
+                else {
+                  mainDiv.style.backgroundColor = "gray";
+                }
+                // ---------
               })
               .catch((error2) => {
                 console.error("Error fetching data:", error2);
@@ -277,7 +287,7 @@ input_Search.addEventListener("change", () => {
       dayOne.innerHTML = days[0];
       // Weather icon day 1
       const dayOneImg = document.getElementById("dayOneImg");
-      dayOneImg.src = `https://openweathermap.org/img/wn/${data.list[8].weather[0].icon}.png`;
+      dayOneImg.src = `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png`;
       // Weather day 1
       const dayOneW = document.getElementById("dayOneW");
       dayOneW.innerHTML = `<h1>${data.list[0].main.temp}°C</h1>`;
@@ -287,7 +297,7 @@ input_Search.addEventListener("change", () => {
       dayTwo.innerHTML = days[1];
       //weather icon
       const dayTwoImg = document.getElementById("dayTwoImg");
-      dayTwoImg.src = `https://openweathermap.org/img/wn/${data.list[16].weather[0].icon}.png`;
+      dayTwoImg.src = `https://openweathermap.org/img/wn/${data.list[5].weather[0].icon}.png`;
       //weather day2
       const dayTwoW = document.getElementById("dayTwoW");
       dayTwoW.innerHTML = `<h1>${data.list[5].main.temp}°C</h1>`;
@@ -297,7 +307,7 @@ input_Search.addEventListener("change", () => {
       dayThree.innerHTML = days[2];
       //weather icon
       const dayThreeImg = document.getElementById("dayThreeImg");
-      dayThreeImg.src = `https://openweathermap.org/img/wn/${data.list[24].weather[0].icon}.png`;
+      dayThreeImg.src = `https://openweathermap.org/img/wn/${data.list[13].weather[0].icon}.png`;
       //weather day2
       const dayThreeW = document.getElementById("dayThreeW");
       dayThreeW.innerHTML = `<h1>${data.list[13].main.temp}°C</h1>`;
@@ -307,7 +317,7 @@ input_Search.addEventListener("change", () => {
       dayFour.innerHTML = days[3];
       //weather icon
       const dayFourImg = document.getElementById("dayFourImg");
-      dayFourImg.src = `https://openweathermap.org/img/wn/${data.list[32].weather[0].icon}.png`;
+      dayFourImg.src = `https://openweathermap.org/img/wn/${data.list[21].weather[0].icon}.png`;
       //weather day2
       const dayFourW = document.getElementById("dayFourW");
       dayFourW.innerHTML = `<h1>${data.list[21].main.temp}°C</h1>`;
@@ -317,13 +327,21 @@ input_Search.addEventListener("change", () => {
       dayFive.innerHTML = days[4];
       //weather icon
       const dayFiveImg = document.getElementById("dayFiveImg");
-      dayFiveImg.src = `https://openweathermap.org/img/wn/${data.list[39].weather[0].icon}.png`;
+      dayFiveImg.src = `https://openweathermap.org/img/wn/${data.list[29].weather[0].icon}.png`;
       //weather day2
       const dayFiveW = document.getElementById("dayFourW");
       dayFiveW.innerHTML = `<h1>${data.list[29].main.temp}°C</h1>`;
       /* -------------------------------------------------------------------*/
       console.log(data.list[0]);
       // displayForCast(location);
+      // -----change background -------
+      let mainDiv = document.getElementById("main");
+      if (data.list[0].main.temp < 20) {
+        mainDiv.style.backgroundColor = "blue";
+      } else {
+        mainDiv.style.backgroundColor = "gray";
+      }
+      // // ---------
     })
     .catch((error) => {
       console.error("Error fetching data:", error);

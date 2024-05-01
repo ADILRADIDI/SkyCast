@@ -34,6 +34,7 @@ body {
   background-color: #8cbd62;
   height: 180px;
   flex-direction: column;
+  /* flex-wrap: wrap; */
   align-items: center;
   justify-content: center;
 }
